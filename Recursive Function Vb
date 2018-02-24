@@ -1,0 +1,108 @@
+Public Class Form1
+    Function factorial(ByVal num As Integer) As Integer
+        Dim result As Integer
+        If (num = 1) Then
+            Return 1
+        Else result = factorial(num - 1) * num
+            Return result
+        End If
+
+    End Function
+
+    Function arithmetic(ByVal initial As Integer, ByVal num1 As Integer, ByVal term As Integer) As Integer
+        Dim sum1 As Integer
+        Dim result1 As Integer
+        If (term = 1) Then
+            Return initial
+        Else result1 = arithmetic(initial, num1, term - 1) + num1
+            sum1 = (term / 2) * (initial + result1)
+            Return sum1
+        End If
+    End Function
+
+    Function geometric(ByVal initial As Integer, ByVal num1 As Integer, ByVal term As Integer) As Integer
+        Dim sum2 As Integer
+        Dim result2 As Integer
+        If (term = 1) Then
+            Return initial
+        Else result2 = geometric(initial, num1, term - 1) * num1
+            sum2 = num1 / (1 - num1)
+            Return sum2
+        End If
+    End Function
+
+    Function Fibonacci(ByVal initial As Integer) As Integer
+        Dim result As Integer
+        If (initial = 0) Then
+            Return 0
+
+        ElseIf (initial = 1) Then
+            Return 1
+
+        Else result = Fibonacci(initial - 1) + Fibonacci(initial - 2)
+            Return result
+        End If
+
+
+    End Function
+    Private Sub getAnswer_Click(sender As Object, e As EventArgs) Handles getAnswer.Click
+        Dim entry As String
+        entry = textBox1.Text
+
+        Dim number As Integer
+        number = Integer.Parse(entry)
+        textBox2.Text = factorial(number)
+    End Sub
+
+    Private Sub getAriSum_Click(sender As Object, e As EventArgs) Handles getAriSum.Click
+        Dim a As Integer
+        Dim n1 As Integer
+        Dim r1 As Integer
+
+        Dim txt1 As String
+        Dim txt3 As String
+        Dim txt5 As String
+
+        txt1 = initial1.Text
+        txt3 = term1.Text
+        txt5 = rate1.Text
+
+
+        a = Integer.Parse(txt1)
+        n1 = Integer.Parse(txt3)
+        r1 = Integer.Parse(txt5)
+
+        ariSum.Text = arithmetic(a, r1, n1)
+    End Sub
+
+    Private Sub getGeoSum_Click(sender As Object, e As EventArgs) Handles getGeoSum.Click
+        Dim b As Integer
+        Dim n2 As Integer
+        Dim r2 As Integer
+
+        Dim txt2 As String
+        Dim txt4 As String
+        Dim txt6 As String
+
+        txt2 = initial1.Text
+        txt4 = term1.Text
+        txt6 = rate1.Text
+
+
+        b = Integer.Parse(txt2)
+        n2 = Integer.Parse(txt4)
+        r2 = Integer.Parse(txt6)
+
+        geoSum.Text = geometric(b, r2, n2)
+    End Sub
+
+    Private Sub getFibSequence_Click(sender As Object, e As EventArgs) Handles getFibSequence.Click
+        Dim term As Integer
+        Dim answer1 As Integer
+        term = Double.Parse(termFib.Text)
+
+        answer1 = Fibonacci(term)
+        fibAnswer.Text = answer1
+
+    End Sub
+End Class
